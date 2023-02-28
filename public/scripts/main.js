@@ -6,11 +6,13 @@ const { value } = parseRequestUrl();
 const cartItems = getCartItems();
 
 //search bar
-const searchBar = document.getElementById('search-form');
-searchBar.innerHTML = `
-    <input type="text" name="q" id="q" value="${value || ''}">
-    <button type="submit"><i class="fa fa-search"></i></button>
-`;
+const searchBar = document.querySelectorAll('.search-form');
+searchBar.forEach((form) => {
+    form.innerHTML = `
+        <input type="text" name="q" id="q" value="${value || ''}">
+        <button type="submit"><i class="fa fa-search"></i></button>
+    `;
+});
 
 document.getElementById('search-form').addEventListener('submit', async (e) => {
     e.preventDefault();
@@ -27,20 +29,33 @@ headerOther.innerHTML = `
             name 
             ? `<li><a href='/users/dashboard'>${name}</a></li>`
             : `<li><a href='/users/register'>REGISTER</a></li>
-                <li><a href='/users/login'>LOGIN</a></li>`
+               <li><a href='/users/login'>LOGIN</a></li>`
         }
+        ${isAdmin 
+            ? `<li>
+                    <a href='/favorites'>
+                        <div class='header-cf'>
+                            <i class="fa-solid fa-user"></i>
+                        </div>
+                    </a>
+                </li>` 
+            : '' }
+        <li>
+            <a href='/favorites'>
+                <div class='header-cf'>
+                    <i class="fa-solid fa-heart"></i>
+                </div>
+            </a>
+        </li>
         <li>
             <a id='cart-icon' href='/cart'>
-                <div class='header-cart'>
+                <div class='header-cf'>
                     <i class="fa-solid fa-cart-shopping"></i>
                     <p>${cartItems.reduce((a, c) => a + c.qty, 0)}</p>
                 </div>
             </a>
         </li>
     </ul>
-    <div class='header-dashboard'>
-        ${isAdmin ? `<a href='/users/dashboard'>Dashboard</a>` : '' }
-    </div>
 `;
 
 
