@@ -137,6 +137,12 @@ button.primary {
     font-weight: 700;
 }
 
+small {
+    margin: -1rem 0 1rem 0;
+    font-size: 14px;
+    line-height: 24px;
+}
+
 .line {
     border-bottom: 2px solid #000;
     margin: 1rem 0;
@@ -232,6 +238,12 @@ aside {
     cursor: pointer;
 }
 
+
+@media only screen and (max-width: 1000px) {
+    .sidebar-close-btn {
+        top: 56px;
+    }
+}
 
 /*OVERLAY*/
 
@@ -527,7 +539,7 @@ aside {
     }
 }
 
-@media only screen and (min-width: 0px) and (max-width: 991px) { 
+@media only screen and (max-width: 991px) { 
     .details {
         display: flex;
         flex-direction: row;
@@ -567,7 +579,7 @@ aside {
     }
 }
 
-@media only screen and (min-width: 0px) and (max-width: 576px) { 
+@media only screen and (max-width: 576px) { 
     .details, .reviews-container {
         flex-direction: column;
     }
@@ -699,7 +711,7 @@ aside {
 }
 
 
-@media only screen and (min-width: 0) and (max-width: 991px) {   
+@media only screen and (max-width: 991px) {   
     .cart {
         flex-direction: column;
         justify-content: center;
@@ -722,7 +734,7 @@ aside {
     }
 }
 
-@media only screen and (min-width: 0px) and (max-width: 576px) {   
+@media only screen and (max-width: 576px) {   
     .cart, .order {
         padding: 2rem 2%;
     }
@@ -973,7 +985,7 @@ label {
 }
 
 
-@media only screen and (min-width: 0) and (max-width: 991px) {   
+@media only screen and (max-width: 991px) {   
    .order {
         flex-direction: column;
         justify-content: center;
@@ -998,7 +1010,7 @@ label {
     }
 }
 
-@media only screen and (min-width: 0px) and (max-width: 576px) {   
+@media only screen and (max-width: 576px) {   
     .smaller {
         font-size: 24px;
         line-height: 64px;
@@ -1059,7 +1071,7 @@ td {
 }
 
 
-@media only screen and (min-width: 0) and (max-width: 1199px) {
+@media only screen and (max-width: 1199px) {
     .profile {
         display: flex;
         flex-direction: column;
@@ -1081,13 +1093,13 @@ td {
     }
 }
 
-@media only screen and (min-width: 0) and (max-width: 991px) {
+@media only screen and (max-width: 991px) {
     .profile .form {
         width: 50%;
     }
 }
 
-@media only screen and (min-width: 0) and (max-width: 991px) {
+@media only screen and (max-width: 991px) {
     .profile .form {
         width: 50%;
     }
@@ -1105,7 +1117,7 @@ td {
     }
 }
 
-@media only screen and (min-width: 0) and (max-width: 576px) {
+@media only screen and (max-width: 576px) {
     .profile {
         padding: 3rem 0%;
     }
@@ -1123,39 +1135,86 @@ td {
 /*DASHBOARD*/
 
 .dashboard {
-    display: flex;
-    background-color: #fff;
-    padding: 0;
+    padding-top: 3rem;
 }
 
-.dashboard h1 {
-    font-size: 32px;
-    line-height: 64px;
-    font-weight: 700;
+.dashboard-header {
+    margin-left: 25rem;
+    text-align: center;
+}
+
+.dashboard-popup {
+    position: absolute;
+    display: none;
+    width: 48px;
+    height: 48px;
+    z-index: 3;
+    background-color: transparent;
+    align-items: center;
+}
+
+.dashboard-overlay {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    top: 104px;
+    bottom: 56px;
+    left: 25rem;
+    width: 100%;
+    height: 100%;
+    background: rgb(0, 0, 0); 
+    background: rgba(0, 0, 0, 0.5);
 }
 
 .dashboard-menu {
-    flex: 1 1 20rem;
+    width: 100%;
+    max-width: 25rem;
     background-color: #e5e5e5;
+    height: 100%;
+    position: fixed;
+    top: 56px;
+    z-index: 2;
 }
 
-.dashboard-menu a {
+.dashboard-menu ul li {
+    display: flex;
+    flex-direction: row;
+    position: relative;
+}
+
+.dashboard-menu ul li a {
     display: flex;
     padding: 1rem;
-    padding-left: 10%;
+    padding-left: 8rem;
     justify-content: space-between;
     font-weight: 700;
     font-size: 20px;
     line-height: 40px;
+    width: 25rem;
 }
 
-.dashboard-menu a:hover {
+.dashboard-menu ul li a:hover {
     background-color: #c0c0c0;
 }
 
-.dashboard-menu li.selected a {
+.dashboard-menu ul li.selected a {
     background-color: #c0c0c0;
     color: #346E26;
+}
+
+.dashboard-menu ul li div {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    margin: 0 auto;
+    justify-content: center;
+    width: 56px;
+    left: 0;
+}
+
+.dashboard-menu ul li div i {
+    font-size: 20px;
+    line-height: 40px;
 }
 
 .dashboard-content {
@@ -1280,50 +1339,23 @@ td {
 }
 
 
-@media only screen and (min-width: 0px) and (max-width: 1199px) {
-    .edit-screen .form {
-        width: 50%;
-    }
-}
-
-@media only screen and (min-width: 577px) and (max-width: 991px) {   
-    .edit-screen .form {
-        width: 60%;
-    }
-}
-
-@media only screen and (min-width: 0px) and (max-width: 576px) {
-    .edit-screen .form {
-        width: 90%;
-        margin-bottom: 5%;
-    }
-}
-
-
-@media only screen and (min-width: 0) and (max-width: 1199px) {
-    .dp-list-header {
-        justify-content: center;
-        margin-top: 1rem;
-    }
-
-    .dashboard {
-        flex-direction: column;
+@media only screen and (max-width: 1000px) {
+    .dashboard-popup {
+        display: flex;
     }
 
     .dashboard-menu {
-        flex: 0;
+        top: 104px;
+        padding-top: 64px;
+        display: none;
     }
 
-    .dashboard-menu a {
-        padding-left: 5%;
+    .dashboard-header {
+        margin-left: 0;
     }
 }
 
-@media only screen and (min-width: 0) and (max-width: 991px) {
-    .dashboard-menu a {
-        padding-left: 3%;
-    }
-
+@media only screen and (max-width: 991px) {
     .dashboard-content {
         padding: 0 3%;
     }
@@ -1342,7 +1374,7 @@ td {
     }
 }
 
-@media only screen and (min-width: 0) and (max-width: 576px) {
+@media only screen and (max-width: 576px) {
     .dashboard-menu a {
         padding-left: 3%;
     }

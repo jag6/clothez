@@ -3,8 +3,13 @@
         <form id="register-form" class="form">
             <section><h1>Create New Account</h1></section>
             <div class="form-field">
-                <label for="name">Name</label>
-                <input type="text" name="name" id="name" required>
+                <label for="first_name">First Name</label>
+                <input type="text" name="first_name" id="first_name" required>
+                <small></small>
+            </div>
+            <div class="form-field">
+                <label for="last_name">Last Name</label>
+                <input type="text" name="last_name" id="last_name" required>
                 <small></small>
             </div>
             <div class="form-field">
@@ -16,11 +21,6 @@
                 <label for="password">Password</label>
                 <input type="password" name="password" id="password" required>   
                 <small></small> 
-            </div>
-            <div class="form-field">
-                <label for="re-enter-password">Re-enter Password</label>
-                <input type="password" name="re-enter-password" id="re-enter-password" required> 
-                <small></small>
             </div>
             <button type="submit" class="primary">REGISTER</button>    
             <div>

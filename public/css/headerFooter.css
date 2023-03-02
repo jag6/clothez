@@ -163,6 +163,7 @@ footer {
     align-items: center;
     color: #fff;
     padding: 0 2%;
+    z-index: 4;
 }
 
 footer p {
@@ -180,11 +181,6 @@ footer .nav ul li a {
 
 
 @media only screen and (max-width: 1100px) {
-    header {
-        height: 104px;
-        flex-direction: column;
-    }
-
     header .nav ul:nth-child(2)  {
         display: none;
     }
@@ -200,6 +196,11 @@ footer .nav ul li a {
 }
 
 @media only screen and (max-width: 1000px) {
+    header {
+        height: 104px;
+        flex-direction: column;
+    }
+
     .search  {
         display: none;
     }
@@ -238,19 +239,19 @@ footer .nav ul li a {
 
 /*CHAT POPUP*/
 
-.open-button {
+.open-popup {
     background-color: #1C353D;
-    color: white;
+    color: #fff;
     padding: 16px;
     border: none;
     cursor: pointer;
     position: fixed;
-    bottom: 5rem;
+    bottom: 56px;
     right: 32px;
     width: auto;
 }
 
-.open-button i {
+.open-popup i {
     font-size: 3rem;
     line-height: 3rem;
 }
@@ -321,4 +322,10 @@ footer .nav ul li a {
 
 .chat-cancel:hover {
     opacity: .8;
+}
+
+@media only screen and (max-width: 576px) {
+    .open-button, .chat-popup {
+        bottom: 224px;
+    }
 }
