@@ -69,16 +69,33 @@ header a, footer a {
     align-items: center;
 }
 
-.header-cf:hover {
-    opacity: .5;
-}
-
 .header-cf i {
     color: #fff;
 }
 
 .header-cf p {
     margin: 0 0 1.5rem 4px;
+}
+
+.user-links li {
+    margin: 0 !important;
+}
+
+.user-links li a {
+    width: 48px;
+    height: 48px;
+    display: flex;
+    margin: 0 auto;
+    justify-content: center;
+}
+
+.user-links li a:hover {
+    border-bottom: 0px solid transparent !important;
+    opacity: .5;
+}
+
+.user-links li:nth-child(3) a {
+    padding-left: 12px;
 }
 
 
@@ -215,7 +232,7 @@ footer .nav ul li a {
         margin-right: 3rem;
     }
 
-    header .page-links, .user-links li:nth-child(1), .user-links li:nth-child(2)  {
+    header .page-links  {
         display: none;
     }
 

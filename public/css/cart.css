@@ -1,0 +1,127 @@
+/*CART*/ 
+
+.cart {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    padding: 2rem 1%;
+}
+
+.cart-list {
+    flex: 3 1 60rem;
+}
+
+.cart-list-container{
+    padding: 1rem 2%;
+    list-style: none;
+    background-color: #fff;
+}
+
+.cart-list-container li {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 1rem;
+    margin-bottom: 1rem;
+    border-bottom: .1rem #c0c0c0 solid;
+}
+
+.cart-list-container:nth-child(1) {
+    margin-right: 2%;
+}
+
+.cart-list-container li:first-child {
+    align-items: flex-end;
+}
+
+.cart-list-container img {
+    max-width: 10rem;
+    max-height: 10rem;
+}
+
+.cart-img {
+    flex: 1 1;
+}
+
+.cart-name {
+    flex: 8 1;
+}
+
+.cart-name > div {
+    padding: 1rem;
+}
+
+.cart-price {
+    flex: 1 1;
+    text-align: right;
+}
+
+.cart-list select, .delete-btn {
+    padding: .5rem;
+    font-size: small;
+}
+
+.cart-list select {
+    width: 50px;
+}
+
+.delete-btn {
+    box-shadow: none;
+    background-color: #e5e5e5;
+    padding: 1rem;
+    border-radius: 10px;
+}
+
+.cart-action {
+    flex: 1 1 20rem;
+    background-color: #fff;
+    padding: 2rem 2%;
+}
+
+.cart-action h3 {
+    line-height: 48px;
+}
+
+#checkout-btn, #continue-shopping-btn, #add-btn {
+    box-shadow: none;
+    font-weight: 600;
+}
+
+#continue-shopping-btn {
+    background-color: #F27430;
+    margin-top: .5rem;
+}
+
+
+@media only screen and (max-width: 991px) {   
+    .cart {
+        flex-direction: column;
+        justify-content: center;
+        width: 100%;
+        padding: 2rem 2%;
+    }
+
+    .cart-list-container:nth-child(1) {
+        margin-right: 0%;
+    }
+
+    .cart-list, .cart-action {
+        flex: 100%;
+        width: 100%;
+    }
+
+    .cart-action {
+        margin-top: 3rem;
+        padding: 2rem 3% 2rem 3%;
+    }
+}
+
+@media only screen and (max-width: 576px) {   
+    .cart, .order {
+        padding: 2rem 2%;
+    }
+    
+    .cart-list-container {
+        padding: 1rem 3%;
+        list-style: none;
+    }
+}

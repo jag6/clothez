@@ -51,7 +51,7 @@ const loginLink = document.createElement('li');
 
 if(isAdmin == 'true') {
     dashboardLink.innerHTML = `
-        <a href='/users/admin'>
+        <a href='/admin/dashboard'>
             <div class='header-cf'>
                 <i class="fa-solid fa-user"></i>
             </div>
@@ -60,7 +60,7 @@ if(isAdmin == 'true') {
     userLinks.insertBefore(dashboardLink, userLinks.children[0]);
 }else if(isAdmin == 'false') {
     dashboardLink.innerHTML = `
-        <a href='/users/dashboard'>
+        <a href='/users/profile'>
             <div class='header-cf'>
                 <i class="fa-solid fa-user"></i>
             </div>
@@ -95,21 +95,24 @@ const dashOverlay = document.getElementById('dashboard-overlay');
 const sidebar = document.getElementById('sidebar-container');
 const sidebarCBtn = document.getElementById('sidebar-close-btn');
 
-dashPU.addEventListener('click', () => {
-    if(dashMenu.style.display === 'flex') {
-        dashMenu.style.display = 'none';
-        dashOverlay.style.display = 'none';
-    }else {
-        dashMenu.style.display = 'flex';
-        dashOverlay.style.display = 'flex';
-    }
-});
-window.addEventListener('click', (e) => {
-    if(e.target == dashOverlay) {
-        dashMenu.style.display = 'none';
-        dashOverlay.style.display = 'none';
-    }
-});
+if(dashPU) {
+    dashPU.addEventListener('click', () => {
+        if(dashMenu.style.display === 'flex') {
+            dashMenu.style.display = 'none';
+            dashOverlay.style.display = 'none';
+        }else {
+            dashMenu.style.display = 'flex';
+            dashOverlay.style.display = 'flex';
+        }
+    });
+    window.addEventListener('click', (e) => {
+        if(e.target == dashOverlay) {
+            dashMenu.style.display = 'none';
+            dashOverlay.style.display = 'none';
+        }
+    });
+}
+
 
 //toggle sidebar
 document.getElementById('sidebar-open-btn').addEventListener('click', () => {
@@ -117,19 +120,25 @@ document.getElementById('sidebar-open-btn').addEventListener('click', () => {
         sidebar.style.display = 'none';
     }else {
         sidebar.style.display = 'flex';
-        dashPU.style.display = 'none';
-        dashMenu.style.display = 'none';
-        dashOverlay.style.display = 'none';
+        if(dashPU) {
+            dashPU.style.display = 'none';
+            dashMenu.style.display = 'none';
+            dashOverlay.style.display = 'none';
+        }
     }
 });
 sidebarCBtn.addEventListener('click', () => {
     sidebar.style.display = 'none';  
-    dashPU.style.display = 'flex';
+    if(dashPU) {
+        dashPU.style.display = 'flex';
+    }
 });
 window.addEventListener('click', (e) => {
     if(e.target == sidebar) {
         sidebar.style.display = 'none';
-        dashPU.style.display = 'flex';
+        if(dashPU) {
+            dashPU.style.display = 'flex';
+        }
     }
 });
 
@@ -147,3 +156,7 @@ closePU.addEventListener('click', () => {
     chatPU.style.display = 'none';
     openPU.style.display = 'flex';
 });
+
+if(isAdmin) {
+    openPU.style.display = 'none';
+}

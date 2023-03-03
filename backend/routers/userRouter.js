@@ -13,8 +13,10 @@ userRouter.get('/login', (req, res) => {
         //metadata
         meta_title: 'Login',
         meta_description: 'Log in to your account',
-        meta_image: 'woman-sunglasses.jpg',
+        meta_image: 'woman-sunglasses.webp',
         meta_url: '/users/login',
+        //css
+        css: '',
         //script
         script: '<script type="module" src="/scripts/users/login.js" defer></script>'
     });
@@ -23,39 +25,30 @@ userRouter.get('/login', (req, res) => {
 //register
 userRouter.get('/register', (req, res) => {
     res.render('users/register', {
-         //metadata
-         meta_title: 'Register',
-         meta_description: 'Register your account',
-         meta_image: 'woman-sunglasses.jpg',
-         meta_url: '/users/register',
-         //script
-         script: '<script type="module" src="/scripts/users/register.js" defer></script>'
+        //metadata
+        meta_title: 'Register',
+        meta_description: 'Register your account',
+        meta_image: 'woman-sunglasses.webp',
+        meta_url: '/users/register',
+        //css
+        css: '',
+        //script
+        script: '<script type="module" src="/scripts/users/register.js" defer></script>'
     });
 });
 
-//dashboard
-userRouter.get('/dashboard', async (req, res) => {
-    res.render('users/dashboard', {
+//user profile
+userRouter.get('/profile', async (req, res) => {
+    res.render('users/profile', {
         //metadata
-        meta_title: 'Dashboard',
+        meta_title: 'Profile',
         meta_description: 'View and change your user information',
-        meta_image: 'woman-sunglasses.jpg',
-        meta_url: '/users/dashboard',
+        meta_image: 'woman-sunglasses.webp',
+        meta_url: '/users/profile',
+        //css
+        css: '<link rel="stylesheet" href="/css/dashboard.css">',
         //script
-        script: '<script type="module" src="/scripts/dashboard/dashboard.js" defer></script>'
-    });
-});
-
-//admin dashboard
-userRouter.get('/admin', async (req, res) => {
-    res.render('users/admin', {
-        //metadata
-        meta_title: 'Admin Dashboard',
-        meta_description: 'View and change your admin user information',
-        meta_image: 'woman-sunglasses.jpg',
-        meta_url: '/users/admin',
-        //script
-        script: '<script type="module" src="/scripts/dashboard/dashboard.js" defer></script>'
+        script: '<script type="module" src="/scripts/users/profile.js" defer></script>'
     });
 });
 
