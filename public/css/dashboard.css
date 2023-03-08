@@ -32,7 +32,7 @@
     display: none;
     position: fixed;
     z-index: 1000;
-    top: 104px;
+    top: 56px;
     bottom: 56px;
     left: 12rem;
     width: 100%;
@@ -75,20 +75,19 @@
 
 .dashboard-menu ul li.selected a {
     background-color: #c0c0c0;
-    color: #346E26;
 }
 
-.dashboard-menu ul li div {
+.dashboard-menu ul li span {
     position: absolute;
     display: flex;
     align-items: center;
     margin: 0 auto;
     justify-content: center;
     width: 56px;
-    left: 0;
+    left: .5rem;
 }
 
-.dashboard-menu ul li div i {
+.dashboard-menu ul li span i {
     font-size: 20px;
     line-height: 40px;
 }
@@ -151,7 +150,16 @@ tbody td:last-child {
     flex-direction: column;
 }
 
+@media only screen and (max-width: 1200px) {
+    .dashboard-popup {
+        display: flex;
+    }
 
+    .dashboard-menu {
+        display: none;
+        padding-top: 3rem;
+    }
+}
 
 @media only screen and (orientation: landscape) and (max-width: 950px) {
     .dashboard-menu {
@@ -160,33 +168,22 @@ tbody td:last-child {
 }
 
 @media only screen and (max-width: 1000px) {
-    .dashboard-popup {
-        display: flex;
-    }
-
     .dashboard-menu {
         top: 104px;
-        padding-top: 3rem;
-        display: none;
     }
 
     .dashboard-header {
         margin-left: 0;
     }
+
+    .dashboard-overlay {
+        top: 104px;
+    }
 }
 
-@media only screen and (max-width: 991px) {
-    #order-container .dashboard-content {
-        padding: 0 0%;
-    }
-
-    .charts {
-        flex-direction: column;
-        justify-content: center;
-    }
-
-    .charts-categories {
-        margin-top: 2rem;
+@media only screen and (max-width: 900px) {
+    .dashboard {
+        padding: 3rem 5% 0 5%;
     }
 }
 

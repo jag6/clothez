@@ -11,11 +11,7 @@ adminRouter.get('/dashboard', async (req, res) => {
         meta_title: 'Admin Dashboard',
         meta_description: 'View and change your admin user information',
         meta_image: 'woman-sunglasses.webp',
-        meta_url: '/users/admin',
-        //css
-        css: '<link rel="stylesheet" href="/css/dashboard.css">',
-        //script
-        script: '<script type="module" src="/scripts/admin/dashboard.js" defer></script>'
+        meta_url: '/users/admin'
     });
 });
 

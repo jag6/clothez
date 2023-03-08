@@ -36,9 +36,9 @@ document.getElementById('login-form').addEventListener('submit', async (e) => {
     }else {
         setUserInfo(data);
         if(data.isAdmin == 'true') {
-            location.href = '/users/admin';
+            location.href = '/admin/dashboard';
         }else {
-            location.href = '/users/dashboard';
+            location.href = '/users/profile';
         }
     }
 });

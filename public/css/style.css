@@ -44,7 +44,7 @@ main {
     padding: 56px 0;
 }
 
-@media only screen and (max-width: 1100px) {
+@media only screen and (max-width: 1000px) {
     body {
         scroll-padding-top: 104px;
     }
@@ -156,12 +156,12 @@ aside {
     background: rgba(0, 0, 0, .5);
     height: 100%;
     z-index: 1;
-    top: 56px;
+    top: 104px;
 }
 
 .sidebar-body {
     height: 100%;
-    width: 30rem;
+    width: 15rem;
     padding-top: 2rem;
     background-color: #fff;
 }
@@ -174,8 +174,8 @@ aside {
 
 .sidebar-close-btn {
     position: absolute;
-    top: 2rem;
-    left: 32rem;
+    top: 0;
+    left: 16rem;
     width: 40px;
     font-size: 3rem;
     line-height: 40px;
@@ -197,18 +197,13 @@ aside {
     margin-top: 1rem;
 }
 
-.categories li {
-    display: flex;
-    width: 100%;
-}
-
 .categories li  {
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
     height: 64px;
-    width: 30rem;
+    width: 15rem;
     position: relative;
     align-items: center;
 }
@@ -226,7 +221,7 @@ aside {
 
 .categories li a {
     height: 64px;
-    width: 30rem;
+    width: 15rem;
     padding: 0 10%;
 }
 
@@ -440,7 +435,7 @@ aside {
     background-color: #b2b2b2;
     margin: 3% 0;
     border-radius: 20px;
-    padding: 2rem 2%;
+    padding: 1.5rem 2%;
     box-shadow: 0 2.8px 2.2px rgba(0, 0, 0, 0.034),
     0 6.7px 5.3px rgba(0, 0, 0, 0.048),
     0 12.5px 10px rgba(0, 0, 0, 0.06),
@@ -449,16 +444,23 @@ aside {
     0 10px 10px rgba(0, 0, 0, 0.12);
 }
 
+.form section {
+    margin-bottom: 2rem;
+}
+
 .form h1 {
     font-size: 24px;
     line-height: 32px;
-    margin-bottom: 2rem;
     text-align: center;
+}
+
+.form span {
+    margin-right: .5rem;
 }
 
 .form button {
     border-radius: 10px;
-    margin-top: 2rem;
+    margin-top: 1rem;
     font-weight: 700;
     font-size: 20px;
     line-height: 24px;
@@ -469,7 +471,7 @@ aside {
 }
 
 .form input {
-    margin-bottom: 1.5rem;
+    margin-bottom: 1rem;
 }
 
 label {
@@ -490,7 +492,7 @@ label {
 .form div {
     margin-top: 3rem;
     background-color: #dedede;
-    padding: 1.5rem 5%;
+    padding: .5rem 5%;
     border-radius: 10px;
     display: flex;
     flex-direction: row;
