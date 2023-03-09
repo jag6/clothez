@@ -1,0 +1,27 @@
+<%- include('../components/headAdmin') %>
+    <section class="dashboard">
+        <section id="edit-product-container" class="dashboard-form">
+            <form id="edit-product-form" class="form">
+                <h2>Edit Product ${product._id.substring(0, 8)}...</h2>
+                <label for="name">Name</label>
+                <input type="text" name="name" id="name" value="${product.name}">
+                <label for="price">Price</label>
+                <input type="number" name="price" id="price" value="${product.price}">   
+                <label for="image">Image (680 x 830)</label>
+                <input type="text" name="image" id="image" value="${product.image}">
+                <input type="file" name="image-file" id="image-file">
+                <label for="brand">Brand</label>
+                <input type="text" name="brand" id="brand" value="${product.brand}"> 
+                <label for="countInStock">Count In Stock</label>
+                <input type="text" name="countInStock" id="countInStock" value="${product.countInStock}">
+                <label for="category">Category</label>
+                <input type="text" name="category" id="category" value="${product.category}"> 
+                <label for="description">Description</label>
+                <textarea form="edit-product-form" type="text" name="description" id="description" cols="30" rows="10" value="${product.description}">${product.description}</textarea>
+                <button type="submit" class="primary bold" id="pes-btn">UPDATE</button>
+                <a class="back-to-pl" href="/admin/product-list">CANCEL</a>
+            </form>   
+        </section>
+    </section>
+
+<%- include('../components/footer') %>

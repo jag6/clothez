@@ -277,12 +277,6 @@ aside {
     font-weight: 700;
 }
 
-@media only screen and (max-width: 576px) {
-    .overlay {
-        padding-top: 88px;
-    }
-}
-
 
 /*BANNER*/
   
@@ -448,7 +442,7 @@ aside {
     margin-bottom: 2rem;
 }
 
-.form h1 {
+.form h1, .form h2 {
     font-size: 24px;
     line-height: 32px;
     text-align: center;

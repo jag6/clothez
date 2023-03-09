@@ -3,7 +3,9 @@
     <section class="dashboard">
         <section class="db-list-header">
             <h1>Product List</h1>
-            <div class="cpb"><button id="create-product-btn" class="primary bold">Create Product</button></div>
+            <div class="cpb">
+                <button id="create-product-btn" class="primary bold">Create Product</button>
+            </div>
         </section>
         <div class="table-small-screen">
             <p>Screen width is too small. Please flip your mobile device over to view table.<p>
@@ -15,29 +17,56 @@
                         <th>ID</th>
                         <th>NAME</th>
                         <th class="tr-action">PRICE</th>
+                        <th>GENDER</th>
                         <th>CATEGORY</th>
-                        <th>BRAND</th>
+                        <th>TYPE</th>
                         <th class="tr-action">ACTION</th>
                     </tr>
                 </thead>
                 <tbody>
-                    ${products.map(product => `
-                    <tr>
-                        <td>${product._id}</td>
-                        <td>${product.name}</td>
-                        <td>${product.price}</td>
-                        <td>${product.category}</td>
-                        <td>${product.brand}</td>
-                        <td>
-                            <button id="${product._id}" class="edit-btn">Edit</button>
-                            <button id="${product._id}" class="delete-btn">Delete</button>
-                        </td>
-                        `).join('\n')
-                    }
+                    <% products.forEach(product => { %>
+                        <tr>
+                            <td><%= product._id %></td>
+                            <td><%= product.name %></td>
+                            <td><%= product.price %></td>
+                            <td><%= product.gender %></td>
+                            <td><%= product.category %></td>
+                            <td><%= product.type %></td>
+                            <td>
+                                <a href="/product/edit/<%= product._id %>" class="edit-btn">Edit</a>
+                                <button id="<%= product._id %>" class="delete-btn">Delete</button>
+                            </td>
+                        </tr>
+                    <% }); %>
                 </tbody>
             </table>
         </div>
-        
+        <section id="container-overlay" class="container-overlay">
+            <section id="new-product-container" class="dashboard-form form-animate">
+                <form id="new-product-form" class="form">
+                    <button type="button" class="dashboard-form-close-btn">
+                        <i class="fa-solid fa-circle-xmark"></i>
+                    </button>
+                    <h2>New Product</h2>
+                    <label for="name">Name</label>
+                    <input type="text" name="name" id="name" value="">
+                    <label for="price">Price</label>
+                    <input type="number" name="price" id="price" value="">   
+                    <label for="image">Image (680 x 830)</label>
+                    <input type="text" name="image" id="image" value="">
+                    <input type="file" name="image-file" id="image-file">
+                    <label for="brand">Brand</label>
+                    <input type="text" name="brand" id="brand" value=""> 
+                    <label for="countInStock">Count In Stock</label>
+                    <input type="text" name="countInStock" id="countInStock" value="">
+                    <label for="category">Category</label>
+                    <input type="text" name="category" id="category" value=""> 
+                    <label for="description">Description</label>
+                    <textarea form="edit-product-form" type="text" name="description" id="description" cols="30" rows="10" value=""></textarea>
+                    <button type="submit" class="primary bold" id="pes-btn">CREATE</button>
+                </form>   
+            </section>
+        </section>
     </section>
 
 <%- include('../components/footer') %>

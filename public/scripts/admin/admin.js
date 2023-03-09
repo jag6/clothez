@@ -1,5 +1,6 @@
-import { getUrl } from '../export/config.js';
+import { apiUrl, getUrl } from '../export/config.js';
 
+//dashboard menu
 const DashboardMenu = {
     render: (props) => {
         return `
@@ -27,16 +28,40 @@ const DashboardMenu = {
     }
 };
 
-if(getUrl == 'http://localhost:4002/admin/dashboard'){
+if(getUrl == `${apiUrl}/admin/dashboard`){
     document.getElementById('dashboard-menu').innerHTML = `${DashboardMenu.render({selected: 'dashboard'})}`;
-}else if(getUrl == 'http://localhost:4002/admin/order-list'){
+}else if(getUrl == `${apiUrl}/admin/order-list`){
     document.getElementById('dashboard-menu').innerHTML = `${DashboardMenu.render({selected: 'orders'})}`;
-}else if(getUrl == 'http://localhost:4002/admin/user-list'){
+}else if(getUrl == `${apiUrl}/admin/user-list`){
     document.getElementById('dashboard-menu').innerHTML = `${DashboardMenu.render({selected: 'users'})}`;
-}else if(getUrl == 'http://localhost:4002/admin/product-list'){
+}else if(getUrl == `${apiUrl}/admin/product-list`){
     document.getElementById('dashboard-menu').innerHTML = `${DashboardMenu.render({selected: 'products'})}`;
-}else if(getUrl == 'http://localhost:4002/admin/banner-list'){
+}else if(getUrl == `${apiUrl}/admin/banner-list`){
     document.getElementById('dashboard-menu').innerHTML = `${DashboardMenu.render({selected: 'banners'})}`;
-}else if(getUrl == 'http://localhost:4002/admin/profile'){
+}else if(getUrl == `${apiUrl}/admin/profile`){
     document.getElementById('dashboard-menu').innerHTML = `${DashboardMenu.render({selected: 'profile'})}`;
+}
+
+
+//product list
+if(document.querySelector('#create-product-btn')) {
+    //new products
+    const createProductBtn = document.getElementById('create-product-btn');
+    const containerOverlay = document.getElementById('container-overlay');
+    const closeProductCont = document.querySelector('.dashboard-form-close-btn');
+        
+    createProductBtn.addEventListener('click', () => {
+        containerOverlay.style.display = 'flex';
+    });
+
+    closeProductCont.addEventListener('click', () => {
+            containerOverlay.style.display = 'none';
+    });
+}
+
+//product edit
+if(document.querySelector('#edit-product-container')) {
+    document.getElementById('edit-product-form').addEventListener('submit', () => {
+        
+    });
 }

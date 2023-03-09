@@ -98,57 +98,6 @@
     margin-bottom: 2rem;
 }
 
-.dashboard button:first-child {
-    margin-bottom: .5rem;
-}
-
-
-/*ADMIN SCREENS*/
-
-.cpb {
-    margin-left: 3rem;
-}
-
-table {
-    border-collapse: collapse;
-    width: 100%;
-}
-
-th {
-    font-size: 16px;
-    line-height: 32px;
-    text-align: center;
-}
-
-tbody tr:nth-child(odd) {
-    background-color: #e5e5e5;
-}
-
-td {
-    padding: 1rem;
-    font-size: 16px;
-    line-height: 32px;
-    text-align: center;
-}
-
-tbody button {
-    font-size: 14px;
-}
-
-.edit-btn {
-    background-color: #346E26;
-    color: #fff;
-}
-
-.dashboard .delete-btn {
-    background-color: #BA382F;
-    color: #fff;
-}
-
-tbody td:last-child {
-    display: flex;
-    flex-direction: column;
-}
 
 @media only screen and (max-width: 1200px) {
     .dashboard-popup {
@@ -184,6 +133,133 @@ tbody td:last-child {
 @media only screen and (max-width: 900px) {
     .dashboard {
         padding: 3rem 5% 0 5%;
+    }
+}
+
+
+/*ADMIN SCREENS*/
+
+/*Product-list*/
+
+.cpb {
+    margin-left: 3rem;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th {
+    font-size: 16px;
+    line-height: 32px;
+    text-align: center;
+}
+
+tbody tr:nth-child(odd) {
+    background-color: #e5e5e5;
+}
+
+td {
+    padding: 1rem;
+    font-size: 16px;
+    line-height: 32px;
+    text-align: center;
+}
+
+tbody button {
+    font-size: 14px;
+}
+
+.edit-btn {
+    background-color: #346E26;
+    color: #fff;
+    padding: .5rem 1rem;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+.dashboard .delete-btn {
+    background-color: #BA382F;
+    color: #fff;
+}
+
+tbody td:last-child {
+    display: flex;
+    flex-direction: column;
+}
+
+.container-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, .5);
+    z-index: 99999;
+}
+
+.dashboard-form {
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    width: 100%;
+}
+
+.dashboard-form .form {
+    width: 100%;
+    max-width: 600px;
+    position: relative;
+}
+
+.dashboard-form-close-btn {
+    position: absolute;
+    top: 0;
+    right: 1rem;
+    padding: 0;
+    background-color: transparent;
+}
+
+.form-animate {
+    overflow-y: scroll;
+    animation-name: modalSlideUp;
+    animation-duration: .7s;
+}
+
+@keyframes modalSlideUp {
+    0% {
+        transform: translateY(1500px);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+/*Edit Products*/
+
+.back-to-pl {
+    border-radius: 10px;
+    margin-top: 1rem;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 24px;
+    text-align: center;
+    background-color: #BA382F;
+    padding: .5rem;
+}
+
+.back-to-pl:hover {
+    border-bottom: 2px solid transparent !important;
+    opacity: .8;
+    transition: 0s;
+}
+
+
+@media only screen and (max-width: 600px) {
+    .dashboard-form {
+        margin: 0 5%;
     }
 }
 
@@ -245,8 +321,6 @@ tbody td:last-child {
 .profile-orders h2 {
     text-align: center;
 }
-
-
 
 
 @media only screen and (max-width: 1199px) {
