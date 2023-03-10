@@ -1,7 +1,7 @@
 const express = require('express');
 const adminRouter = express.Router();
 const Product = require('../models/productModel');
-
+const { isAuth, isAdmin } = require('../utils');
 
 //GET PAGES
 
@@ -37,5 +37,9 @@ adminRouter.get('/product/edit:id', async (req, res) => {
         product: product
     })
 });
+
+
+//POST
+
 
 module.exports = adminRouter;

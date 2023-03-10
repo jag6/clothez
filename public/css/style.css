@@ -464,7 +464,7 @@ aside {
     border-radius: 10px;
 }
 
-.form input {
+.form input, .form textarea {
     margin-bottom: 1rem;
 }
 
