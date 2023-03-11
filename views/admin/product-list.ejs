@@ -1,5 +1,6 @@
 <%- include('../components/headAdmin') %>
     <%- include('../components/dashboardMenu') %>
+    <div id="create-edit-hidden"></div>
     <section class="dashboard">
         <section class="db-list-header">
             <h1>Product List</h1>
@@ -33,7 +34,7 @@
                             <td><%= product.category %></td>
                             <td><%= product.type %></td>
                             <td>
-                                <a href="/product/edit/<%= product._id %>" class="edit-btn">Edit</a>
+                                <a href="/admin/product/edit/<%= product._id %>" class="edit-btn">Edit</a>
                                 <button id="<%= product._id %>" class="delete-btn">Delete</button>
                             </td>
                         </tr>
@@ -47,7 +48,7 @@
                     <button type="button" class="dashboard-form-close-btn">
                         <i class="fa-solid fa-circle-xmark"></i>
                     </button>
-                    <h2>New Product</h2>
+                    <section><h2><span><i class="fa-solid fa-plus"></i></span>New Product</h2></section>
                     <label for="name">Name</label>
                     <input type="text" name="name" id="name" value="">
                     <label for="description">Description</label>
@@ -61,22 +62,22 @@
                     <label for="image_main">Image Main (1200 x 600)</label>
                     <input type="text" name="image_main" id="image_main" value="">
                     <input type="file" name="image_file_main" id="image_file_main">
-                    <label for="image_1">Image 1</label>
+                    <label for="image_1">Image 1 (Optional)</label>
                     <input type="text" name="image_1" id="image_1" value="">
                     <input type="file" name="image_file_1" id="image_file_1">
-                    <label for="image_2">Image 2</label>
+                    <label for="image_2">Image 2 (Optional)</label>
                     <input type="text" name="image_2" id="image_2" value="">
                     <input type="file" name="image_file_2" id="image_file_2">
-                    <label for="image_3">Image 3</label>
+                    <label for="image_3">Image 3 (Optional)</label>
                     <input type="text" name="image_3" id="image_3" value="">
                     <input type="file" name="image_file_3" id="image_file_3">
-                    <label for="image_4">Image 4</label>
+                    <label for="image_4">Image 4 (Optional)</label>
                     <input type="text" name="image_4" id="image_4" value="">
                     <input type="file" name="image_file_4" id="image_file_4">
                     <label for="price">Price</label>
                     <input type="number" name="price" id="price" value=""> 
-                    <label for="countInStock">Count In Stock</label>
-                    <input type="text" name="countInStock" id="countInStock" value="">
+                    <label for="count_in_stock">Count In Stock</label>
+                    <input type="text" name="count_in_stock" id="count_in_stock" value="">
                     <button type="submit" class="primary bold" id="pes-btn">CREATE</button>
                 </form>   
             </section>

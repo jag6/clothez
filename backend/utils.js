@@ -19,7 +19,7 @@ module.exports = {
         const bearerToken = req.headers.authorization;
         //non-valid header authorization
         if(!bearerToken) {
-            res.res.status(401).send({ message: 'Token has not been supplied' }); 
+            res.status(401).send({ message: 'Token has not been supplied' }); 
         }else {
             const token = bearerToken.slice(7, bearerToken.length);
             jwt.verify(token, config.JWT_SECRET, (err, data) => {

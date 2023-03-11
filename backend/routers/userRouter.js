@@ -57,12 +57,15 @@ userRouter.get('/profile', async (req, res) => {
 
 //log in user
 userRouter.post('/login', [
+    //sanitize post data
     body('email').isEmail().normalizeEmail(),
     body('password').trim().escape()
 ], async (req, res) => {
+    //find user in database
     const loginUser = await User.findOne({
         email: req.body.email
     });
+    //redirect user or deny entry
     if(!loginUser) {
         return res.status(401).send({
             message: 'Invalid Email or Password'
@@ -87,11 +90,13 @@ userRouter.post('/login', [
 
 //register user
 userRouter.post('/register', [
+    //sanitize post data
     body('first_name').isLength({ min: 2 }).trim().escape(),
     body('last_name').isLength({ min: 2 }).trim().escape(),
     body('email').isEmail().normalizeEmail(),
     body('password').isLength({ min: 8 }).trim().escape()
 ], async (req, res) => {
+    //validate data
     const errors = validationResult(req);
     if(!errors.isEmpty()) {
         return res.status(400).send({
@@ -99,6 +104,7 @@ userRouter.post('/register', [
         });
     }
 
+    //prepare user to be saved
     const user = new User({
         first_name: req.body.first_name,
         last_name: req.body.last_name,

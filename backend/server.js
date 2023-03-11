@@ -4,6 +4,7 @@ const mongoose = require('mongoose');
 const config = require('./config');
 const userRouter = require('./routers/userRouter');
 const adminRouter = require('./routers/adminRouter');
+const uploadRouter = require('./routers/uploadRouter');
 
 //set up mongoose
 mongoose.connect(config.MONGODB_URL, {
@@ -32,9 +33,9 @@ app.use((err, req, res, next) => {
 
 
 //set up routers
-//app.use('/products', productRouter);
 app.use('/users', userRouter);
 app.use('/admin', adminRouter);
+app.use('/upload', uploadRouter);
 
 //index page
 app.get('/', (req, res) => {

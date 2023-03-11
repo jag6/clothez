@@ -45,7 +45,7 @@ if(getUrl == `${apiUrl}/admin/dashboard`){
 }
 
 
-//new products
+//create new product
 if(document.querySelector('#create-product-btn')) {
     //open and close create product container
     const createProductBtn = document.getElementById('create-product-btn');
@@ -61,7 +61,7 @@ if(document.querySelector('#create-product-btn')) {
     });
 
     //post new product
-    const newProduct = async ({ name, description, gender, category, type, image_main, image_1, image_2, image_3, image_4, price, countInStock }) => {
+    const newProduct = async ({ name, description, gender, category, type, image_main, image_1, image_2, image_3, image_4, price, count_in_stock }) => {
         try {
             const { token } = getUserInfo();
             const response = await axios ({
@@ -72,7 +72,7 @@ if(document.querySelector('#create-product-btn')) {
                     Authorization: `Bearer ${token}`
                 },
                 data: {
-                    name, description, gender, category, type, image_main, image_1, image_2, image_3, image_4, price, countInStock
+                    name, description, gender, category, type, image_main, image_1, image_2, image_3, image_4, price, count_in_stock
                 }
             });
             if(response.statusText !== 'Created') {
@@ -80,6 +80,7 @@ if(document.querySelector('#create-product-btn')) {
             }
             return response.data;
         }catch(err) {
+            console.log(err);
             return { error: err.response.data.message || err.message };
         }
     };
@@ -87,7 +88,8 @@ if(document.querySelector('#create-product-btn')) {
     document.getElementById('new-product-form').addEventListener('submit', async (e) => {
         e.preventDefault();
         const data = await newProduct({
-            name: document.getElementById('name').value, description: document.getElementById('description').value, 
+            name: document.getElementById('name').value, 
+            description: document.getElementById('description').value, 
             gender: document.getElementById('gender').value, 
             category: document.getElementById('category').value, 
             type: document.getElementById('type').value, 
@@ -97,7 +99,7 @@ if(document.querySelector('#create-product-btn')) {
             image_3: document.getElementById('image_3').value, 
             image_4: document.getElementById('image_4').value, 
             price: document.getElementById('price').value, 
-            countInStock: document.getElementById('countInStock').value
+            count_in_stock: document.getElementById('count_in_stock').value
         });
         if(data.error) {
             showMessage(data.error);
@@ -105,13 +107,16 @@ if(document.querySelector('#create-product-btn')) {
             location.href = '/admin/product-list';
         }
     });
+}
 
-    //upload image(s)
-    const uploadImage = async (formData) => {
+
+//upload images
+if(document.querySelector('#create-edit-hidden')) {
+    const uploadImageMain = async (formData) => {
         try {
             const { token } = getUserInfo();
             const response = await axios ({
-                url: `${apiUrl}/admin/product-list/imageUpload`,
+                url: `${apiUrl}/upload/image_main`,
                 method: 'POST',
                 headers: {
                     'Content-Type': 'multipart/form-data',
@@ -124,6 +129,91 @@ if(document.querySelector('#create-product-btn')) {
             }
             return response.data;
         }catch(err) {
+            console.log(err);
+            return { error: err.response.data.message || err.message };
+        }
+    }
+    const uploadImage1 = async (formData) => {
+        try {
+            const { token } = getUserInfo();
+            const response = await axios ({
+                url: `${apiUrl}/upload/image_1`,
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'multipart/form-data',
+                    Authorization: `Bearer ${token}`
+                },
+                data: formData
+            });
+            if(response.statusText !== 'Created') {
+                throw new Error(response.data.message);
+            }
+            return response.data;
+        }catch(err) {
+            console.log(err);
+            return { error: err.response.data.message || err.message };
+        }
+    }
+    const uploadImage2 = async (formData) => {
+        try {
+            const { token } = getUserInfo();
+            const response = await axios ({
+                url: `${apiUrl}/upload/image_2`,
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'multipart/form-data',
+                    Authorization: `Bearer ${token}`
+                },
+                data: formData
+            });
+            if(response.statusText !== 'Created') {
+                throw new Error(response.data.message);
+            }
+            return response.data;
+        }catch(err) {
+            console.log(err);
+            return { error: err.response.data.message || err.message };
+        }
+    }
+    const uploadImage3 = async (formData) => {
+        try {
+            const { token } = getUserInfo();
+            const response = await axios ({
+                url: `${apiUrl}/upload/image_3`,
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'multipart/form-data',
+                    Authorization: `Bearer ${token}`
+                },
+                data: formData
+            });
+            if(response.statusText !== 'Created') {
+                throw new Error(response.data.message);
+            }
+            return response.data;
+        }catch(err) {
+            console.log(err);
+            return { error: err.response.data.message || err.message };
+        }
+    }
+    const uploadImage4 = async (formData) => {
+        try {
+            const { token } = getUserInfo();
+            const response = await axios ({
+                url: `${apiUrl}/upload/image_4`,
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'multipart/form-data',
+                    Authorization: `Bearer ${token}`
+                },
+                data: formData
+            });
+            if(response.statusText !== 'Created') {
+                throw new Error(response.data.message);
+            }
+            return response.data;
+        }catch(err) {
+            console.log(err);
             return { error: err.response.data.message || err.message };
         }
     }
@@ -133,7 +223,7 @@ if(document.querySelector('#create-product-btn')) {
         const file = e.target.files[0];
         const formData = new FormData();
         formData.append('image_main', file);
-        const data = await uploadImage(formData);
+        const data = await uploadImageMain(formData);
         if(data.error) {
             showMessage(data.error);
         }else {
@@ -145,7 +235,7 @@ if(document.querySelector('#create-product-btn')) {
         const file = e.target.files[0];
         const formData = new FormData();
         formData.append('image_1', file);
-        const data = await uploadImage(formData);
+        const data = await uploadImage1(formData);
         if(data.error) {
             showMessage(data.error);
         }else {
@@ -156,7 +246,7 @@ if(document.querySelector('#create-product-btn')) {
         const file = e.target.files[0];
         const formData = new FormData();
         formData.append('image_2', file);
-        const data = await uploadImage(formData);
+        const data = await uploadImage2(formData);
         if(data.error) {
             showMessage(data.error);
         }else {
@@ -167,7 +257,7 @@ if(document.querySelector('#create-product-btn')) {
         const file = e.target.files[0];
         const formData = new FormData();
         formData.append('image_3', file);
-        const data = await uploadImage(formData);
+        const data = await uploadImage3(formData);
         if(data.error) {
             showMessage(data.error);
         }else {
@@ -178,7 +268,7 @@ if(document.querySelector('#create-product-btn')) {
         const file = e.target.files[0];
         const formData = new FormData();
         formData.append('image_4', file);
-        const data = await uploadImage(formData);
+        const data = await uploadImage4(formData);
         if(data.error) {
             showMessage(data.error);
         }else {
@@ -187,7 +277,8 @@ if(document.querySelector('#create-product-btn')) {
     });
 }
 
-//edit products
+
+//edit product
 if(document.querySelector('#edit-product-container')) {
     document.getElementById('edit-product-form').addEventListener('submit', (e) => {
         e.preventDefault();
